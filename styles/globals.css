@@ -1,5 +1,6 @@
 :root {
   --black: #3b434e;
+  --gray-light: #ebebeb;
   --green: #1dc37e;
   --green-light: #c8f8e4;
   --purple: #7653fc;
@@ -7,6 +8,7 @@
   --white: #ffffff;
   --background: #f5f6f8;
   --primary: var(--purple);
+  --primary-hover: #633dfa;
   --font-primary: "Noto Sans KR", "Arial", sans-serif;
 }
 
