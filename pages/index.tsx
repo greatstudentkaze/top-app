@@ -1,6 +1,9 @@
-import { Button, HeadingTag, Paragraph, Tag } from '../components';
+import { Button, HeadingTag, Paragraph, Rating, Tag } from '../components';
+import { useState } from 'react';
 
 const Home = (): JSX.Element => {
+  const [rating, setRating] = useState(4);
+
   return <>
     <HeadingTag level="1">Курсы по Photoshop</HeadingTag>
     <Tag size="small" color="red">hh.ru</Tag>
@@ -8,6 +11,8 @@ const Home = (): JSX.Element => {
     <Tag color="green">hh.ru</Tag>
     <Tag color="primary">hh.ru</Tag>
     <Tag color="ghost">hh.ru</Tag>
+    <Rating rating={2} />
+    <Rating rating={rating} setRating={setRating} isEditable />
     <Paragraph size="small">
       Напишу сразу в двух курсах, так как проходил оба. Java будет многим непросвещённым сложновата в изучении, но здесь
       перевес из-за лидирующего положения языка как самого популярного в программировании. Выбор мой пал на эту

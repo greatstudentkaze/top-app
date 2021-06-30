@@ -1,0 +1,25 @@
+.rating {
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.rating button {
+  cursor: pointer;
+}
+
+.rating li:not(:last-child) .star {
+  padding-right: 2.5px;
+}
+
+.rating li:not(:first-child) .star {
+  padding-left: 2.5px;
+}
+
+.filled {
+  fill: var(--primary);
+}
