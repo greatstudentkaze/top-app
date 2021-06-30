@@ -1,11 +1,12 @@
+import { withLayout } from '../layout';
+
 import { Button, HeadingTag, Paragraph, Rating, Tag } from '../components';
 import { useState } from 'react';
-import Layout from '../layout';
 
 const Home = (): JSX.Element => {
   const [rating, setRating] = useState(4);
 
-  return <Layout>
+  return <>
     <HeadingTag level="1">Курсы по Photoshop</HeadingTag>
     <Tag size="small" color="red">hh.ru</Tag>
     <Tag color="red">hh.ru</Tag>
@@ -36,7 +37,7 @@ const Home = (): JSX.Element => {
     <Button>Узнать подробнее</Button>
     <Button arrowDirection="right">Узнать подробнее</Button>
     <Button appearance="ghost" arrowDirection="down">Читать отзывы</Button>
-  </Layout>;
+  </>;
 };
 
-export default Home;
+export default withLayout(Home);
