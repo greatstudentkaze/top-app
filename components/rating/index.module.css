@@ -12,11 +12,9 @@
   cursor: pointer;
 }
 
-.rating li:not(:last-child) .star {
+.rating li .star {
+  width: 25px;
   padding-right: 2.5px;
-}
-
-.rating li:not(:first-child) .star {
   padding-left: 2.5px;
 }
 
