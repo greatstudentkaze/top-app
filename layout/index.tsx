@@ -10,14 +10,12 @@ import styles from './index.module.css';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
-    <>
-      <Header />
-      <main>
-        <Sidebar />
-        <div>{children}</div>
-      </main>
-      <Footer />
-    </>
+    <div className={styles.wrapper}>
+      <Header className={styles.header} />
+      <Sidebar className={styles.sidebar} />
+      <main className={styles.main}>{children}</main>
+      <Footer className={styles.footer} />
+    </div>
   );
 };
 
