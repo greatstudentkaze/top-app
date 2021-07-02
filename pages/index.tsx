@@ -11,9 +11,6 @@ const Home = ({ menu }: HomeProps): JSX.Element => {
   const [rating, setRating] = useState(4);
 
   return <>
-    <ul>
-      {menu.map(it => <li key={it._id.secondCategory}>{it._id.secondCategory}</li>)}
-    </ul>
     <HeadingTag level="1">Курсы по Photoshop</HeadingTag>
     <Tag size="small" color="red">hh.ru</Tag>
     <Tag color="red">hh.ru</Tag>
