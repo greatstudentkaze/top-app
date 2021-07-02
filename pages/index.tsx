@@ -1,12 +1,19 @@
-import { withLayout } from '../layout';
-
-import { Button, HeadingTag, Paragraph, Rating, Tag } from '../components';
 import { useState } from 'react';
+import { GetStaticProps } from 'next';
+import axios from 'axios';
 
-const Home = (): JSX.Element => {
+import { withLayout } from '../layout';
+import { Button, HeadingTag, Paragraph, Rating, Tag } from '../components';
+
+import { MenuItem } from '../interfaces/menu.interface';
+
+const Home = ({ menu }: HomeProps): JSX.Element => {
   const [rating, setRating] = useState(4);
 
   return <>
+    <ul>
+      {menu.map(it => <li key={it._id.secondCategory}>{it._id.secondCategory}</li>)}
+    </ul>
     <HeadingTag level="1">Курсы по Photoshop</HeadingTag>
     <Tag size="small" color="red">hh.ru</Tag>
     <Tag color="red">hh.ru</Tag>
@@ -41,3 +48,22 @@ const Home = (): JSX.Element => {
 };
 
 export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+  const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + `/api/top-page/find`, {
+    firstCategory
+  });
+
+  return {
+    props: {
+      menu,
+      firstCategory,
+    }
+  };
+};
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[],
+  firstCategory: number,
+}
