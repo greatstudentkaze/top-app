@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Link from 'next/link';
 import cn from 'classnames';
 
 import { AppContext } from '../../../context/app.context';
@@ -28,10 +29,12 @@ const Menu = (): JSX.Element => {
           <li className={cn(styles.firstLevelItem, {
             [styles.firstLevelItemActive]: item.id === firstCategory,
           })} key={item.route}>
-            <a href={`/${item.route}`}>
-              {item.icon}
-              {item.name}
-            </a>
+            <Link href={`/${item.route}`}>
+              <a>
+                {item.icon}
+                {item.name}
+              </a>
+            </Link>
             {item.id === firstCategory &&  buildSecondLevel(item.route)}
           </li>
         ))}
@@ -62,7 +65,9 @@ const Menu = (): JSX.Element => {
         [styles.thirdLevelItemActive]: false,
         // todo: remove false
       })}>
-        <a href={`${route}/${page.alias}`}>{page.category}</a>
+        <Link href={`/${route}/${page.alias}`}>
+          <a>{page.category}</a>
+        </Link>
       </li>
       )
     );
