@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 
 import { Advantages, HeadHunterData, HeadingTag, Skills, Sort, Tag } from '../../components';
 
@@ -7,18 +7,25 @@ import { TopLevelCategory } from '../../interfaces/page.interface';
 
 import { TopPageComponentProps } from './index.props';
 import styles from './index.module.css';
+import { sortReducer } from './sort.reducer';
 
 const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
+  const [{ products: sortedProducts, sortType }, dispatchSort] = useReducer(sortReducer, { products, sortType: SortTypeEnum.Rating });
+
+  const setSortType = (sortType: SortTypeEnum) => {
+    dispatchSort({ type: sortType });
+  };
+
   return (
     <>
       <header className={styles.header}>
         <HeadingTag level="1">{page.title}</HeadingTag>
         {products.length && <Tag color="gray" size="medium">{products.length}</Tag>}
-        <Sort className={styles.sort} sortType={SortTypeEnum.Rating} setSortType={() => { return; }} />
+        <Sort className={styles.sort} sortType={sortType} setSortType={setSortType} />
       </header>
 
       <ul>
-        {products.length && products.map(product => <li key={product._id}>{product.title}</li>)}
+        {sortedProducts.length && sortedProducts.map(product => <li key={product._id}>{product.title}</li>)}
       </ul>
 
       <div className={styles.titleWithTag}>
