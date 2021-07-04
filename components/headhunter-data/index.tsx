@@ -5,6 +5,7 @@ import { Card } from '../index';
 import { HeadHunterDataProps } from './index.props';
 import styles from './index.module.css';
 import StarIcon from './star.svg';
+import { formatRuPrice } from '../../helpers';
 
 const HeadHunterData = ({ count, juniorSalary, middleSalary, seniorSalary }: HeadHunterDataProps): JSX.Element => {
   return <div className={styles.headhunter}>
@@ -15,29 +16,29 @@ const HeadHunterData = ({ count, juniorSalary, middleSalary, seniorSalary }: Hea
     <Card className={styles.salaries}>
       <div className={styles.salaryItem}>
         <p className={styles.title}>Начальный</p>
-        <p className={styles.salaryValue}>{juniorSalary}</p>
+        <p className={styles.salaryValue}>{formatRuPrice(juniorSalary)}</p>
         <ul className={styles.rate}>
-          <li><StarIcon className={styles.starActive} /></li>
-          <li><StarIcon /></li>
-          <li><StarIcon /></li>
+          <li><StarIcon className={styles.starActive}/></li>
+          <li><StarIcon/></li>
+          <li><StarIcon/></li>
         </ul>
       </div>
       <div className={styles.salaryItem}>
         <p className={styles.title}>Средний</p>
-        <p className={styles.salaryValue}>{middleSalary}</p>
+        <p className={styles.salaryValue}>{formatRuPrice(middleSalary)}</p>
         <ul className={styles.rate}>
-          <li><StarIcon className={styles.starActive} /></li>
-          <li><StarIcon className={styles.starActive} /></li>
-          <li><StarIcon /></li>
+          <li><StarIcon className={styles.starActive}/></li>
+          <li><StarIcon className={styles.starActive}/></li>
+          <li><StarIcon/></li>
         </ul>
       </div>
       <div className={styles.salaryItem}>
         <p className={styles.title}>Профессионал</p>
-        <p className={styles.salaryValue}>{seniorSalary}</p>
+        <p className={styles.salaryValue}>{formatRuPrice(seniorSalary)}</p>
         <ul className={styles.rate}>
-          <li><StarIcon className={styles.starActive} /></li>
-          <li><StarIcon className={styles.starActive} /></li>
-          <li><StarIcon className={styles.starActive} /></li>
+          <li><StarIcon className={styles.starActive}/></li>
+          <li><StarIcon className={styles.starActive}/></li>
+          <li><StarIcon className={styles.starActive}/></li>
         </ul>
       </div>
     </Card>
