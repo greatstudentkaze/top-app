@@ -26,6 +26,8 @@ body {
   margin: 0;
   padding: 0;
 
+  cursor: default;
+
   color: var(--black);
 
   background-color: var(--background);

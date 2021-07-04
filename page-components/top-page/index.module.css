@@ -1,0 +1,33 @@
+.header {
+  display: grid;
+  grid-template-columns: auto min-content 1fr;
+  column-gap: 20px;
+
+  align-items: center;
+}
+
+.sort {
+  justify-self: end;
+}
+
+.vacancies {
+
+}
+
+.titleWithTag {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
+
+  justify-items: start;
+
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1200px) {
+  .titleWithTag {
+    margin-bottom: 30px;
+  }
+}

@@ -23,6 +23,9 @@
 
 .main {
   grid-area: main;
+
+  padding-top: 40px;
+  padding-bottom: 49px;
 }
 
 .footer {
