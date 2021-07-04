@@ -6,16 +6,13 @@ import { ParsedUrlQuery } from 'querystring';
 import { FirstLevelMenuItem, MenuItem } from '../../interfaces/menu.interface';
 import { TopPageModel } from '../../interfaces/page.interface';
 import { ProductModel } from '../../interfaces/product.interface';
-
-import { withLayout } from '../../layout';
 import { firstLevelMenu } from '../../helpers';
 
-const TopPage = ({ menu, page, products }: TopPageProps) => {
-  return (
-    <div>
-      {products && products.length}
-    </div>
-  );
+import { withLayout } from '../../layout';
+import { TopPageComponent } from '../../page-components';
+
+const TopPage = ({ menu, page, products, firstCategory }: TopPageProps) => {
+  return <TopPageComponent firstCategory={firstCategory} page={page} products={products} />;
 };
 
 export default withLayout(TopPage);
