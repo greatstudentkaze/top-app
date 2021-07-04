@@ -5,6 +5,7 @@ import { HeadHunterData, HeadingTag, Tag } from '../../components';
 import { TopPageComponentProps } from './index.props';
 import styles from './index.module.css';
 import { TopLevelCategory } from '../../interfaces/page.interface';
+import Advantages from '../../components/advantages';
 
 const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
   return (
@@ -26,6 +27,8 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
         </div>
         {firstCategory === TopLevelCategory.Courses && <HeadHunterData {...page.hh} />}
       </div>
+
+      {page.advantages.length > 0 && <Advantages advantages={page.advantages} />}
     </>
   );
 };
