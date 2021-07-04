@@ -1,0 +1,41 @@
+.sort {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 40px;
+}
+
+.sort a {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out 0s;
+
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.sort a:hover {
+  color: var(--primary-hover);
+}
+
+.active {
+  color: var(--primary);
+
+  font-weight: bold;
+}
+
+.icon {
+  display: inline-block;
+  visibility: hidden;
+
+  margin-right: 8px;
+
+  transition: opacity 0.3s ease-in-out 0s;
+
+  opacity: 0;
+  fill: currentColor;
+}
+
+.active .icon {
+  visibility: visible;
+
+  opacity: 1;
+}

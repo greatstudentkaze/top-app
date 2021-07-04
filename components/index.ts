@@ -6,4 +6,5 @@ export { default as HeadHunterData } from './headhunter-data';
 export { default as Paragraph } from './paragraph';
 export { default as Rating } from './rating';
 export { default as Skills } from './skills';
+export { default as Sort } from './sort';
 export { default as Tag } from './tag';

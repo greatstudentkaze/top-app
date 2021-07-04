@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { Advantages, HeadHunterData, HeadingTag, Skills, Tag } from '../../components';
+import { Advantages, HeadHunterData, HeadingTag, Skills, Sort, Tag } from '../../components';
+
+import { SortTypeEnum } from '../../components/sort/index.props';
+import { TopLevelCategory } from '../../interfaces/page.interface';
 
 import { TopPageComponentProps } from './index.props';
 import styles from './index.module.css';
-import { TopLevelCategory } from '../../interfaces/page.interface';
 
 const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
   return (
@@ -12,7 +14,7 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
       <header className={styles.header}>
         <HeadingTag level="1">{page.title}</HeadingTag>
         {products.length && <Tag color="gray" size="medium">{products.length}</Tag>}
-        <div className={styles.sort}>Сортировка</div>
+        <Sort className={styles.sort} sortType={SortTypeEnum.Rating} setSortType={() => { return; }} />
       </header>
 
       <ul>
