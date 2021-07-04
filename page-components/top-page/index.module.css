@@ -10,20 +10,44 @@
   justify-self: end;
 }
 
-.vacancies {
-  margin-bottom: 50px;
-}
-
 .titleWithTag {
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 20px;
 
+  align-items: center;
   justify-items: start;
 
-  align-items: center;
-
+  margin-top: 50px;
   margin-bottom: 24px;
+}
+
+.titleWithTag h2 {
+  margin-top: 0;
+}
+
+.seoText {
+  margin-top: 50px;
+}
+
+.seoText h1 {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.seoText h2 {
+  margin-top: 50px;
+
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.seoText h3 {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 27px;
 }
 
 @media (max-width: 1200px) {
