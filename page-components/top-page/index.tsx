@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { Advantages, HeadHunterData, HeadingTag, Input, Skills, Sort, Tag, Textarea } from '../../components';
+import { Advantages, HeadHunterData, HeadingTag, Input, Product, Skills, Sort, Tag, Textarea } from '../../components';
 
 import { SortTypeEnum } from '../../components/sort/index.props';
 import { TopLevelCategory } from '../../interfaces/page.interface';
@@ -24,8 +24,10 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
         <Sort className={styles.sort} sortType={sortType} setSortType={setSortType} />
       </header>
 
-      <ul>
-        {sortedProducts.length && sortedProducts.map(product => <li key={product._id}>{product.title}</li>)}
+      <ul className={styles.productList}>
+        {sortedProducts.length && sortedProducts.map(product => <li key={product._id}>
+          <Product data={product} />
+        </li>)}
       </ul>
 
       <Input placeholder="Имя" />

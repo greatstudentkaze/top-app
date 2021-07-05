@@ -1,0 +1,80 @@
+.product {
+  display: grid;
+  grid-template-columns: [start] 70px [logo-end] 30px [title-start] calc(50% - 100px) [center] 1fr [price-start] auto [price-end] 40px [credit-start] auto [credit-end] 40px [rate-start] auto [end];
+
+  padding: 30px;
+}
+
+.product hr {
+  grid-column: start / end;
+
+  width: 100%;
+  height: 1px;
+
+  border: none;
+  background-color: var(--gray-light);
+}
+
+.logo {
+  grid-column: start / logo-end;
+  grid-row: 1 / span 2;
+}
+
+.title,
+.tags {
+  grid-column: title-start / center;
+}
+
+.price,
+.priceLabel {
+  grid-column: price-start / price-end;
+
+}
+
+.credit,
+.creditLabel {
+  grid-column: credit-start / credit-end;
+
+}
+
+.rating,
+.rateLabel {
+  grid-column: rate-start / end;
+
+}
+
+.tags {
+
+}
+
+.priceLabel {
+
+}
+
+.creditLabel {
+
+}
+
+.rateLabel {
+
+}
+
+.description {
+  grid-column: start / end;
+}
+
+.features {
+  grid-column: start / center;
+}
+
+.advantages {
+  grid-column: center / end;
+}
+
+.disadvantages {
+  grid-column: center / end;
+}
+
+.actions {
+  grid-column: start / end;
+}

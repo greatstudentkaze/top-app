@@ -10,6 +10,17 @@
   justify-self: end;
 }
 
+.productList {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.productList > li:not(:last-child) {
+  margin-bottom: 30px;
+}
+
 .titleWithTag {
   display: grid;
   grid-template-columns: auto 1fr;
