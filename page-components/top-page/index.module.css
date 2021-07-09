@@ -1,9 +1,10 @@
 .header {
   display: grid;
-  grid-template-columns: auto min-content 1fr;
-  column-gap: 20px;
-
   align-items: center;
+  column-gap: 20px;
+  grid-template-columns: auto min-content 1fr;
+
+  margin-bottom: 30px;
 }
 
 .sort {
@@ -64,5 +65,20 @@
 @media (max-width: 1200px) {
   .titleWithTag {
     margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header {
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+
+    margin-bottom: 40px;
+  }
+
+  .sort {
+    justify-self: start;
+
+    margin-top: 20px;
   }
 }

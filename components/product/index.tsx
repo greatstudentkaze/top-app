@@ -75,7 +75,7 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
         {disadvantages}
       </div>}
 
-      <hr/>
+      <hr />
 
       <div className={styles.actions}>
         <Button>Узнать подробнее</Button>

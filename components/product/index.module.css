@@ -35,6 +35,8 @@
 .price {
   display: flex;
   flex-wrap: wrap;
+
+  white-space: nowrap;
 }
 
 .price div {
@@ -60,6 +62,8 @@
 
 .rating {
   align-self: end;
+
+  white-space: nowrap;
 }
 
 .priceLabel,
@@ -92,24 +96,14 @@
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
 
   margin: 0;
   margin-top: 7px;
   padding: 0;
 
   list-style-type: none;
-}
-
-.priceLabel {
-
-}
-
-.creditLabel {
-
-}
-
-.rateLabel {
-
 }
 
 .description {
@@ -196,4 +190,143 @@
 
 .reviewsButton {
   margin-left: 20px;
+}
+
+@media screen and (max-width: 1320px) {
+  .product {
+    grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+    grid-template-areas:
+      "logo . title title title title title"
+      "logo . tags tags tags tags tags"
+      "price price price . credit . rating"
+      "priceLabel priceLabel priceLabel . creditLabel . ratingLabel"
+      "hr hr hr hr hr hr hr"
+      "description description description description description description description"
+      "features features features features features features features"
+      "advantages advantages advantages . disadvantages disadvantages disadvantages"
+      "hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+      "actions actions actions actions actions actions actions";
+  }
+
+  .logo {
+    grid-area: logo;
+  }
+
+  .title {
+    grid-area: title;
+  }
+
+  .categories {
+    grid-area: tags;
+
+    margin-bottom: 20px;
+  }
+
+  .price {
+    grid-area: price;
+  }
+
+  .credit {
+    grid-area: credit;
+  }
+
+  .rating {
+    grid-area: rating;
+  }
+
+  .priceLabel {
+    grid-area: priceLabel;
+  }
+
+  .creditLabel {
+    grid-area: creditLabel;
+  }
+
+  .rateLabel {
+    grid-area: ratingLabel;
+  }
+
+  .product hr:nth-of-type(1) {
+    grid-area: hr;
+  }
+
+  .description {
+    grid-area: description;
+  }
+
+  .features {
+    grid-area: features;
+
+    margin-bottom: 20px;
+  }
+
+  .advantages {
+    grid-area: advantages;
+  }
+
+  .disadvantages {
+    grid-area: disadvantages;
+  }
+
+  .actions {
+    grid-area: actions;
+  }
+
+  .product hr:nth-of-type(2) {
+    grid-area: hr2;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .product {
+    grid-template-columns: 70px 30px 1fr;
+    grid-template-areas:
+      "logo . title"
+      "logo . tags"
+      "priceLabel priceLabel price"
+      "creditLabel creditLabel credit"
+      "ratingLabel ratingLabel rating"
+      "hr hr hr"
+      "description description description"
+      "features features features"
+      "advantages advantages advantages"
+      "disadvantages disadvantages disadvantages"
+      "hr2 hr2 hr2"
+      "actions actions actions";
+  }
+
+  .price,
+  .credit,
+  .rating {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .product {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "title"
+      "tags"
+      "priceLabel"
+      "price"
+      "creditLabel"
+      "credit"
+      "ratingLabel"
+      "rating"
+      "hr"
+      "description"
+      "features"
+      "advantages"
+      "disadvantages"
+      "hr2"
+      "actions";
+  }
+
+  .priceLabel,
+  .creditLabel,
+  .rateLabel {
+    margin-bottom: 5px;
+  }
 }
