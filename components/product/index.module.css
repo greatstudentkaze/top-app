@@ -10,6 +10,8 @@
 
   width: 100%;
   height: 1px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   border: none;
   background-color: var(--gray-light);
@@ -20,31 +22,82 @@
   grid-row: 1 / span 2;
 }
 
+.logo img {
+  display: block;
+
+  border-radius: 5px;
+}
+
+.title {
+  align-self: end;
+}
+
+.price {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.price div {
+  align-self: center;
+}
+
+.price,
+.credit {
+  align-self: end;
+
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.discount {
+  margin-left: 5px;
+}
+
+.credit span {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.rating {
+  align-self: end;
+}
+
+.priceLabel,
+.creditLabel,
+.rateLabel {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 19px;
+}
+
 .title,
-.tags {
+.categories {
   grid-column: title-start / center;
 }
 
 .price,
 .priceLabel {
   grid-column: price-start / price-end;
-
 }
 
 .credit,
 .creditLabel {
   grid-column: credit-start / credit-end;
-
 }
 
 .rating,
 .rateLabel {
   grid-column: rate-start / end;
-
 }
 
-.tags {
+.categories {
+  display: flex;
 
+  margin: 0;
+  margin-top: 7px;
+  padding: 0;
+
+  list-style-type: none;
 }
 
 .priceLabel {
@@ -61,20 +114,86 @@
 
 .description {
   grid-column: start / end;
+
+  margin: 0;
+  margin-bottom: 14px;
+
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .features {
   grid-column: start / center;
+
+  padding-right: 60px;
+
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+
+  align-items: baseline;
+  column-gap: 10px;
+}
+
+.feature:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.featureLabel {
+  font-weight: bold;
+}
+
+.dots {
+  border-bottom: 1px dashed var(--gray-light);
+}
+
+.featureValue {
+  text-align: right;
+}
+
+.subtitle {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px;
 }
 
 .advantages {
   grid-column: center / end;
+
+  border-left: 2px solid var(--green);
 }
 
 .disadvantages {
   grid-column: center / end;
+
+  margin-top: 20px;
+
+  border-left: 2px solid #fc836d;
+}
+
+.advantages,
+.disadvantages {
+  padding-left: 15px;
+
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.advantages .subtitle,
+.disadvantages .subtitle {
+  margin-bottom: 5px;
 }
 
 .actions {
   grid-column: start / end;
+}
+
+.reviewsButton {
+  margin-left: 20px;
 }
