@@ -1,6 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 
+import Image from 'next/image';
+
 import { Button, Card, HeadingTag, Rating, Tag } from '../index';
 
 import { ProductProps } from './index.props';
@@ -28,7 +30,7 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
   return (
     <Card className={cn(styles.product, className)} {...props} color="white" >
       <div className={styles.logo}>
-        <img src={process.env.NEXT_PUBLIC_DOMAIN + image} width="70" height="70" alt="" aria-labelledby={id} />
+        <Image src={process.env.NEXT_PUBLIC_DOMAIN + image} width="70" height="70" alt="" aria-labelledby={id} />
       </div>
       <div className={styles.title} id={id}>
         <HeadingTag level="3">{title}</HeadingTag>
