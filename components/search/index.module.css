@@ -3,8 +3,11 @@
 }
 
 .input {
-  width: 100%;
   padding-right: 45px;
+}
+
+.input input {
+  width: 100%;
 
   text-overflow: ellipsis;
 }
