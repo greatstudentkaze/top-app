@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 
 import { Advantages, HeadHunterData, HeadingTag, Product, Skills, Sort, Tag } from '../../components';
 
@@ -15,6 +15,10 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
   const setSortType = (sortType: SortTypeEnum) => {
     dispatchSort({ type: sortType });
   };
+
+  useEffect(() => {
+    dispatchSort({ type: 'RESET', payload: products });
+  }, [products]);
 
   return (
     <>
