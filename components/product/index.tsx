@@ -95,10 +95,10 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
         [styles.opened]: isReviewOpened,
         [styles.closed]: !isReviewOpened,
       })} color="lightpurple">
-        {reviews.map(review => <>
-          <Review key={review._id} data={review} />
+        {reviews.map(review => <div key={review._id}>
+          <Review data={review} />
           <hr />
-        </>)}
+        </div>)}
         <ReviewForm productId={id} />
       </Card>
     </>
