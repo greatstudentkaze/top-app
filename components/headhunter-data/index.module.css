@@ -79,7 +79,7 @@
 }
 
 .starActive {
-  fill: #fc836d;
+  fill: var(--tomato);
 }
 
 @media (max-width: 1200px) {

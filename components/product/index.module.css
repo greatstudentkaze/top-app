@@ -169,7 +169,7 @@
 
   margin-top: 20px;
 
-  border-left: 2px solid #fc836d;
+  border-left: 2px solid var(--tomato);
 }
 
 .advantages,
