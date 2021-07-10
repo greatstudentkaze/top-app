@@ -6,7 +6,7 @@ import styles from './index.module.css';
 import StarIcon from './star.svg';
 
 // todo: accessibility
-const Rating = forwardRef(({ rating, setRating, isEditable = false, className, ...props }: RatingProps, ref: ForwardedRef<HTMLUListElement>): JSX.Element => {
+const Rating = forwardRef(({ rating, setRating, isEditable = false, className, error, ...props }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
   useEffect(() => {
@@ -42,9 +42,16 @@ const Rating = forwardRef(({ rating, setRating, isEditable = false, className, .
     setRatingArray(updatedArray);
   };
 
-  return <ul className={cn(styles.rating, className)} ref={ref} {...props}>
-    {ratingArray.map((item, i) => <li key={i}>{item}</li>)}
-  </ul>;
+  return (
+    <div className={cn(styles.wrapper, className, {
+      [styles.error]: error,
+    })} ref={ref} {...props}>
+      <ul className={styles.rating}>
+        {ratingArray.map((item, i) => <li key={i}>{item}</li>)}
+      </ul>
+      {error && <p className={styles.errorMessage}>{error.message}</p>}
+    </div>
+  );
 });
 
 export default Rating;

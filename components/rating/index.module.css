@@ -1,3 +1,13 @@
+.wrapper {
+  position: relative;
+
+  padding-right: 95px;
+}
+
+.error svg {
+  stroke: var(--tomato);
+}
+
 .rating {
   display: flex;
   align-items: center;
@@ -22,4 +32,19 @@
 
 .filled {
   fill: var(--primary);
+}
+
+.errorMessage {
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  margin: 0;
+
+  transform: translateY(-50%);
+
+  color: var(--tomato);
+
+  font-size: 12px;
+  line-height: 16px;
 }
