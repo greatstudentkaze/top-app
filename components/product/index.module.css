@@ -192,6 +192,21 @@
   margin-left: 20px;
 }
 
+.reviews {
+  padding: 30px;
+}
+
+.closed {
+  overflow: hidden;
+
+  max-height: 0;
+  padding: 0;
+}
+
+.opened {
+  max-height: none;
+}
+
 @media screen and (max-width: 1320px) {
   .product {
     grid-template-columns: 70px 30px auto 40px auto 40px 1fr;

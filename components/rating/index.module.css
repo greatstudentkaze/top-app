@@ -13,6 +13,8 @@
 }
 
 .rating li .star {
+  display: block;
+
   width: 25px;
   padding-right: 2.5px;
   padding-left: 2.5px;
