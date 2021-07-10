@@ -1,23 +1,38 @@
 import React from 'react';
 import cn from 'classnames';
+import { useForm, Controller } from 'react-hook-form';
 
 import { Button, Input, Rating, Textarea } from '../index';
 
+import { IReviewForm } from './form.interface';
 import { ReviewFormProps } from './index.props';
 import styles from './index.module.css';
 
 import CloseIcon from './close.svg';
 
 const Review = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
+  const { register, control, handleSubmit } = useForm<IReviewForm>();
+
+  const onSubmit = (data: IReviewForm) => {
+    console.log(data);
+  };
+
   return <>
-    <form className={cn(styles.reviewForm, className)} {...props}>
-      <Input placeholder="Имя" />
-      <Input placeholder="Заголовок отзыва" />
+    <form className={cn(styles.reviewForm, className)} onSubmit={handleSubmit(onSubmit)} {...props}>
+      <Input {...register('name')} placeholder="Имя" />
+      <Input {...register('title')} placeholder="Заголовок отзыва" />
       <div className={styles.ratingBlock}>
         Оценка:
-        <Rating className={styles.rating} rating={0} />
+        <Controller
+          control={control}
+          name="rating"
+          render={
+            ({ field }) =>
+              <Rating className={styles.rating} isEditable rating={field.value} ref={field.ref} setRating={field.onChange} />
+          }
+        />
       </div>
-      <Textarea className={styles.textarea} placeholder="Текст отзыва" />
+      <Textarea className={styles.textarea} {...register('description')} placeholder="Текст отзыва" />
       <div className={styles.submit}>
         <Button type="submit">Отправить</Button>
         <p>*&nbsp;Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ForwardedRef, forwardRef, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import { RatingProps } from './index.props';
@@ -6,7 +6,7 @@ import styles from './index.module.css';
 import StarIcon from './star.svg';
 
 // todo: accessibility
-const Rating = ({ rating, setRating, isEditable = false, className, ...props }: RatingProps): JSX.Element => {
+const Rating = forwardRef(({ rating, setRating, isEditable = false, className, ...props }: RatingProps, ref: ForwardedRef<HTMLUListElement>): JSX.Element => {
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
   useEffect(() => {
@@ -42,9 +42,9 @@ const Rating = ({ rating, setRating, isEditable = false, className, ...props }: 
     setRatingArray(updatedArray);
   };
 
-  return <ul className={cn(styles.rating, className)} {...props}>
+  return <ul className={cn(styles.rating, className)} ref={ref} {...props}>
     {ratingArray.map((item, i) => <li key={i}>{item}</li>)}
   </ul>;
-};
+});
 
 export default Rating;
