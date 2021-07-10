@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
+import { motion } from 'framer-motion';
 
 import { Advantages, HeadHunterData, HeadingTag, Product, Skills, Sort, Tag } from '../../components';
 
@@ -29,9 +30,9 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
       </header>
 
       <ul className={styles.productList}>
-        {sortedProducts.length && sortedProducts.map(product => <li key={product._id}>
+        {sortedProducts.length && sortedProducts.map(product => <motion.li key={product._id} layout>
           <Product data={product} />
-        </li>)}
+        </motion.li>)}
       </ul>
 
       <div className={styles.titleWithTag}>
