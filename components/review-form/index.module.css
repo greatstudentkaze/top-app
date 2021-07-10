@@ -108,7 +108,7 @@
   margin: 0;
 }
 
-.successClose {
+.alertClose {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -122,14 +122,39 @@
   background-color: transparent;
 }
 
-.successClose svg {
+.alertClose svg {
   display: block;
 }
 
-.successClose:enabled:hover {
+.alertClose:enabled:hover {
   transform: rotate(-90deg);
 }
 
-.successClose:enabled:active {
+.alertClose:enabled:active {
   opacity: 0.7;
+}
+
+/* error alert */
+
+.error {
+  position: relative;
+
+  margin-top: 30px;
+  padding: 20px;
+
+  color: var(--tomato);
+  border: 1px solid var(--tomato);
+  border-radius: 5px;
+  background-color: var(--white);
+
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.error .alertClose svg {
+  stroke: var(--tomato);
+}
+
+.errorMessage {
+  margin: 0;
 }

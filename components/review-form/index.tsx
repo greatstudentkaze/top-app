@@ -1,20 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { useForm, Controller } from 'react-hook-form';
+import axios from 'axios';
+
+import { API } from '../../helpers/api';
 
 import { Button, Input, Rating, Textarea } from '../index';
 
-import { IReviewForm } from './form.interface';
+import { IReviewForm, IReviewSentResponse } from './form.interface';
 import { ReviewFormProps } from './index.props';
 import styles from './index.module.css';
 
 import CloseIcon from './close.svg';
 
 const Review = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
-  const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
+  const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
+  const [isSuccessfulSend, setIsSuccessfulSend] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const onSubmit = (data: IReviewForm) => {
-    console.log(data);
+  const onSubmit = async (formData: IReviewForm) => {
+    try {
+      const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
+      if (data.message) {
+        setIsSuccessfulSend(true);
+        reset();
+      } else {
+        setErrorMessage('Что-то пошло не так...');
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      setErrorMessage('Что-то пошло не так, попробуйте обновить страницу.');
+    }
   };
 
   return <>
@@ -52,13 +69,19 @@ const Review = ({ productId, className, ...props }: ReviewFormProps): JSX.Elemen
         <p>*&nbsp;Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>
       </div>
     </form>
-    <div className={styles.success}>
-      <button className={styles.successClose} type="button" aria-label="Закрыть">
+    {isSuccessfulSend && <div className={styles.success}>
+      <button className={styles.alertClose} type="button" aria-label="Закрыть" onClick={() => setIsSuccessfulSend(false)}>
         <CloseIcon />
       </button>
       <h4 className={styles.successTitle}>Ваш отзыв отправлен</h4>
       <p className={styles.successText}>Спасибо! Отзыв будет опубликован после проверки.</p>
-    </div>
+    </div>}
+    {errorMessage && <div className={styles.error}>
+      <button className={styles.alertClose} type="button" aria-label="Закрыть" onClick={() => setErrorMessage('')}>
+        <CloseIcon />
+      </button>
+      <p className={styles.errorMessage}>{errorMessage}</p>
+    </div>}
   </>;
 };
 
