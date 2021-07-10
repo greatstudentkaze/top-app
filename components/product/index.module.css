@@ -5,7 +5,8 @@
   padding: 30px;
 }
 
-.product hr {
+.product hr,
+.reviews hr {
   grid-column: start / end;
 
   width: 100%;
@@ -273,6 +274,7 @@
     grid-area: features;
 
     margin-bottom: 20px;
+    padding-right: 0;
   }
 
   .advantages {

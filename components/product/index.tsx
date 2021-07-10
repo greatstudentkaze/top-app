@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import Image from 'next/image';
 
-import { Button, Card, HeadingTag, Rating, Review, Tag } from '../index';
+import { Button, Card, HeadingTag, Rating, Review, ReviewForm, Tag } from '../index';
 
 import { ProductProps } from './index.props';
 import styles from './index.module.css';
@@ -95,7 +95,11 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
         [styles.opened]: isReviewOpened,
         [styles.closed]: !isReviewOpened,
       })} color="lightpurple">
-        {reviews.map(review => <Review key={review._id} data={review} />)}
+        {reviews.map(review => <>
+          <Review key={review._id} data={review} />
+          <hr />
+        </>)}
+        <ReviewForm productId={id} />
       </Card>
     </>
   );
