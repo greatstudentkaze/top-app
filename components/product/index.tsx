@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, MouseEvent } from 'react';
 import cn from 'classnames';
 
 import Image from 'next/image';
@@ -28,11 +28,22 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
     _id: id
   } = data;
 
-  const [isReviewOpened, setIsReviewOpened] = useState(true);
+  const [isReviewOpened, setIsReviewOpened] = useState(false);
+  const reviewElementRef = useRef<HTMLDivElement>(null);
+
+  const scrollToReview = (evt: MouseEvent<HTMLAnchorElement>) => {
+    evt.preventDefault();
+
+    setIsReviewOpened(true);
+    reviewElementRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
   return (
     <>
-      <Card className={cn(styles.product, className)} {...props} color="white" >
+      <Card className={cn(styles.product, className)} {...props} color="white" ref={null}>
         <div className={styles.logo}>
           <Image src={process.env.NEXT_PUBLIC_DOMAIN + image} width="70" height="70" alt="" aria-labelledby={id} />
         </div>
@@ -56,7 +67,11 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
         </ul>
         <div className={styles.priceLabel}>цена</div>
         <div className={styles.creditLabel}>кредит</div>
-        <div className={styles.rateLabel}>{reviewCount} {declOfNum(reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
+        <div className={styles.rateLabel}>
+          <a href={`ref-${id}`} onClick={scrollToReview}>
+            {reviewCount} {declOfNum(reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+          </a>
+        </div>
 
         <hr/>
 
@@ -94,7 +109,7 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
       <Card className={cn(styles.reviews, {
         [styles.opened]: isReviewOpened,
         [styles.closed]: !isReviewOpened,
-      })} color="lightpurple">
+      })} color="lightpurple" ref={reviewElementRef} id={`ref-${id}`}>
         {reviews.map(review => <div key={review._id}>
           <Review data={review} />
           <hr />
