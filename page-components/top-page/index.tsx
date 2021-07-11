@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 import { Advantages, HeadHunterData, HeadingTag, Product, Skills, Sort, Tag } from '../../components';
 
@@ -12,6 +12,7 @@ import { sortReducer } from './sort.reducer';
 
 const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
   const [{ products: sortedProducts, sortType }, dispatchSort] = useReducer(sortReducer, { products, sortType: SortTypeEnum.Rating });
+  const shouldReduceMotion = useReducedMotion();
 
   const setSortType = (sortType: SortTypeEnum) => {
     dispatchSort({ type: sortType });
@@ -25,12 +26,12 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
     <>
       <header className={styles.header}>
         <HeadingTag level="1">{page.title}</HeadingTag>
-        {products.length && <Tag color="gray" size="medium">{products.length}</Tag>}
+        {products.length > 0 && <Tag color="gray" size="medium">{products.length}</Tag>}
         <Sort className={styles.sort} sortType={sortType} setSortType={setSortType} />
       </header>
 
       <ul className={styles.productList}>
-        {sortedProducts.length && sortedProducts.map(product => <motion.li key={product._id} layout>
+        {sortedProducts.length > 0 && sortedProducts.map(product => <motion.li key={product._id} layout={!shouldReduceMotion}>
           <Product data={product} />
         </motion.li>)}
       </ul>

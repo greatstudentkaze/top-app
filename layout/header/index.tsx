@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import { HeaderProps } from './index.props';
@@ -12,6 +12,7 @@ import Sidebar from '../sidebar';
 const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const router = useRouter();
+  const shouldReduceMotion = useReducedMotion();
 
   const menuVariants = {
     opened: {
@@ -22,7 +23,7 @@ const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
       },
     },
     closed: {
-      opacity: 0,
+      opacity: shouldReduceMotion ? 1 : 0,
       x: '100%',
     },
   };

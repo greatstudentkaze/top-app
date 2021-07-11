@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 import { AppContext } from '../../../context/app.context';
 import { PageItem } from '../../../interfaces/menu.interface';
@@ -16,12 +16,13 @@ import thirdLevelStyles from './third-level-menu.module.css';
 const Menu = (): JSX.Element => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
   const router = useRouter();
+  const shouldReduceMotion = useReducedMotion();
 
   const variants = {
     visible: {
       paddingTop: 8,
       paddingBottom: 5,
-      transition: {
+      transition: shouldReduceMotion ? {} : {
         staggerChildren: 0.02,
       }
     },
@@ -37,7 +38,7 @@ const Menu = (): JSX.Element => {
       height: 29,
     },
     hidden: {
-      opacity: 0,
+      opacity: shouldReduceMotion ? 1 : 0,
       height: 0,
     },
   };
