@@ -32,7 +32,7 @@
   grid-area: footer;
 }
 
-@media (max-width: 767.98px) {
+@media screen and (max-width: 767.98px) {
   .wrapper {
     grid-template-rows: auto 1fr;
     grid-template-columns: minmax(320px, 1200px);
@@ -47,11 +47,10 @@
   }
 
   .header {
-    display: block;
+    display: grid;
   }
 
   .main {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 20px 15px 29px;
   }
 }
