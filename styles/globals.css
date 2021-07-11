@@ -1,16 +1,16 @@
 :root {
   --black: #3b434e;
-  --gray: #787d85;
+  --gray: #6c7077;
   --gray-light: #ebebeb;
-  --green: #1dc37e;
+  --green: #247a56;
   --green-light: #c8f8e4;
-  --purple: #7653fc;
+  --purple: #7351f5;
   --red: #de0000;
   --tomato: #fc836d;
   --white: #ffffff;
   --background: #f5f6f8;
   --primary: var(--purple);
-  --primary-hover: #633dfa;
+  --primary-hover: #6340de;
   --font-primary: "Noto Sans KR", "Arial", sans-serif;
 }
 
