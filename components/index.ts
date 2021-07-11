@@ -14,3 +14,4 @@ export { default as Skills } from './skills';
 export { default as Sort } from './sort';
 export { default as Tag } from './tag';
 export { default as Textarea } from './textarea';
+export { default as Up } from './up';

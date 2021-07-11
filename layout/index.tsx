@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import cn from 'classnames';
 
 import { AppContextProvider, IAppContext } from '../context/app.context';
 import Header from './header';
 import Sidebar from './sidebar';
 import Footer from './footer';
+import { Up } from '../components';
 
 import { LayoutProps } from './index.props';
 import styles from './index.module.css';
@@ -16,6 +16,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       <Sidebar className={styles.sidebar} />
       <main className={styles.main}>{children}</main>
       <Footer className={styles.footer} />
+      <Up />
     </div>
   );
 };
