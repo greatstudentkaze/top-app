@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import axios from 'axios';
 import { ParsedUrlQuery } from 'querystring';
 
@@ -13,7 +14,15 @@ import { withLayout } from '../../layout';
 import { TopPageComponent } from '../../page-components';
 
 const TopPage = ({ menu, page, products, firstCategory }: TopPageProps) => {
-  return <TopPageComponent firstCategory={firstCategory} page={page} products={products} />;
+  return (
+    <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name="description" content={page.metaDescription} />
+      </Head>
+      <TopPageComponent firstCategory={firstCategory} page={page} products={products} />
+    </>
+  );
 };
 
 export default withLayout(TopPage);
