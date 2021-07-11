@@ -11,6 +11,27 @@
   min-height: 100vh;
 }
 
+.skipMenu {
+  position: fixed;
+  top: 5px;
+  left: 100px;
+
+  display: block;
+  overflow: hidden;
+
+  height: 0;
+  padding: 0;
+
+  color: var(--white);
+  border: none;
+  background-color: var(--primary);
+}
+
+.skipMenu:focus {
+  height: auto;
+  padding: 5px 10px;
+}
+
 .header {
   grid-area: header;
 
@@ -26,6 +47,8 @@
 
   padding-top: 40px;
   padding-bottom: 49px;
+
+  outline: none;
 }
 
 .footer {

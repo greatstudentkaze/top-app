@@ -97,7 +97,7 @@ const Menu = (): JSX.Element => {
                 animate={item.isOpened ? 'visible' : 'hidden'}
                 layout
               >
-                {buildThirdLevel(item.pages, route)}
+                {buildThirdLevel(item.pages, route, item.isOpened)}
               </motion.ul>
             </li>
           );
@@ -106,7 +106,7 @@ const Menu = (): JSX.Element => {
     );
   };
 
-  const buildThirdLevel = (pages: PageItem[], route: string) => {
+  const buildThirdLevel = (pages: PageItem[], route: string, isOpened = false) => {
     return (
       pages.map(page => {
         const path = `/${route}/${page.alias}`;
@@ -116,7 +116,7 @@ const Menu = (): JSX.Element => {
             [styles.thirdLevelItemActive]: path === router.asPath,
           })} variants={thirdLevelItemVariants}>
             <Link href={path}>
-              <a>{page.category}</a>
+              <a tabIndex={isOpened ? 0 : -1}>{page.category}</a>
             </Link>
           </motion.li>
         );
