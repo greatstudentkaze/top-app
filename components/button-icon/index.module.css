@@ -1,0 +1,51 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  transition-property: background-color, opacity;
+
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+  font-size: 14px;
+}
+
+.button svg {
+  fill: var(--white);
+
+  transition: fill 0.3s ease-in-out 0s;
+}
+
+.button:focus-visible,
+.button:enabled:hover {
+  background-color: var(--primary-hover);
+}
+
+.button:enabled:active {
+  opacity: 0.7;
+}
+
+.white {
+  color: var(--primary);
+  background-color: var(--white);
+}
+
+.white svg {
+  fill: var(--primary);
+}
+
+.white:focus-visible svg,
+.white:enabled:hover svg {
+  fill: var(--white);
+}

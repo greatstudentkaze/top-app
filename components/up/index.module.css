@@ -2,22 +2,4 @@
   position: fixed;
   right: 30px;
   bottom: 30px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 40px;
-  height: 40px;
-
-  transition: background-color 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s;
-
-  border-radius: 10px;
-  background-color: var(--primary);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
-}
-
-.up:hover,
-.up:focus-visible {
-  background-color: var(--primary-hover);
 }
