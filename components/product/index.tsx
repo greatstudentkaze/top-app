@@ -50,6 +50,7 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
     hidden: {
       height: 0,
       opacity: 0,
+      overflow: 'hidden',
     },
   };
 
