@@ -1,0 +1,27 @@
+.secondLevelItem {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+}
+
+.secondLevelItem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.secondLevelItem > button {
+  padding: 0;
+
+  cursor: pointer;
+
+  text-transform: uppercase;
+
+  color: inherit;
+  border: none;
+  background-color: transparent;
+
+  font: inherit;
+}
+
+.secondLevelItem > .secondLevelItemBlock {
+  overflow: hidden;
+}

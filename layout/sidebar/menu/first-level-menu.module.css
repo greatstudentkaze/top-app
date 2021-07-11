@@ -1,0 +1,33 @@
+.firstLevelItem:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.firstLevelItem > a {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  column-gap: 20px;
+
+  align-items: center;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.firstLevelItem > a svg {
+  fill: currentColor;
+}
+
+.firstLevelItemActive > a {
+  color: var(--primary);
+}
+
+.firstLevelItem > ul {
+  margin-top: 14px;
+
+  margin-left: 11px;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  padding-left: 32px;
+
+  border-left: 1px solid #dfdfdf;
+}

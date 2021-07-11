@@ -9,6 +9,9 @@ import { PageItem } from '../../../interfaces/menu.interface';
 import { firstLevelMenu } from '../../../helpers';
 
 import styles from './index.module.css';
+import firstLevelStyles from './first-level-menu.module.css';
+import secondLevelStyles from './second-level-menu.module.css';
+import thirdLevelStyles from './third-level-menu.module.css';
 
 const Menu = (): JSX.Element => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
@@ -59,8 +62,8 @@ const Menu = (): JSX.Element => {
     return (
       <ul>
         {firstLevelMenu.map(item => (
-          <li className={cn(styles.firstLevelItem, {
-            [styles.firstLevelItemActive]: item.id === firstCategory,
+          <li className={cn(firstLevelStyles.firstLevelItem, {
+            [firstLevelStyles.firstLevelItemActive]: item.id === firstCategory,
           })} key={item.route}>
             <Link href={`/${item.route}`}>
               <a>
@@ -86,12 +89,12 @@ const Menu = (): JSX.Element => {
           }
 
           return (
-            <li className={styles.secondLevelItem} key={item._id.secondCategory}>
+            <li className={secondLevelStyles.secondLevelItem} key={item._id.secondCategory}>
               <button type="button" onClick={() => openSecondLevelItemBlock(item._id.secondCategory)}>
                 {item._id.secondCategory}
               </button>
               <motion.ul
-                className={styles.secondLevelItemBlock}
+                className={secondLevelStyles.secondLevelItemBlock}
                 variants={variants}
                 initial={item.isOpened ? 'visible' : 'hidden'}
                 animate={item.isOpened ? 'visible' : 'hidden'}
@@ -112,8 +115,8 @@ const Menu = (): JSX.Element => {
         const path = `/${route}/${page.alias}`;
 
         return (
-          <motion.li key={page._id} className={cn(styles.thirdLevelItem, {
-            [styles.thirdLevelItemActive]: path === router.asPath,
+          <motion.li key={page._id} className={cn(thirdLevelStyles.thirdLevelItem, {
+            [thirdLevelStyles.thirdLevelItemActive]: path === router.asPath,
           })} variants={thirdLevelItemVariants}>
             <Link href={path}>
               <a tabIndex={isOpened ? 0 : -1}>{page.category}</a>
