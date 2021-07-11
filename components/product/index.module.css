@@ -202,19 +202,10 @@
 }
 
 .reviews {
-  margin-top: -5px;
-  padding: 30px;
-}
-
-.closed {
   overflow: hidden;
 
-  max-height: 0;
-  padding: 0;
-}
-
-.opened {
-  max-height: none;
+  margin-top: -5px;
+  padding: 30px;
 }
 
 @media screen and (max-width: 1320px) {

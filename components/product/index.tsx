@@ -1,5 +1,6 @@
 import React, { useRef, useState, MouseEvent } from 'react';
 import cn from 'classnames';
+import { motion } from 'framer-motion';
 
 import Image from 'next/image';
 
@@ -39,6 +40,17 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
       behavior: 'smooth',
       block: 'start',
     });
+  };
+
+  const reviewsVariants = {
+    visible: {
+      height: 'auto',
+      opacity: 1,
+    },
+    hidden: {
+      height: 0,
+      opacity: 0,
+    },
   };
 
   return (
@@ -106,16 +118,15 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
           >Читать отзывы</Button>
         </div>
       </Card>
-      <Card className={cn(styles.reviews, {
-        [styles.opened]: isReviewOpened,
-        [styles.closed]: !isReviewOpened,
-      })} color="lightpurple" ref={reviewElementRef} id={`ref-${id}`}>
-        {reviews.map(review => <div key={review._id}>
-          <Review data={review} />
-          <hr />
-        </div>)}
-        <ReviewForm productId={id} />
-      </Card>
+      <motion.div variants={reviewsVariants} initial="hidden" animate={isReviewOpened ? 'visible' : 'hidden'}>
+        <Card className={styles.reviews} color="lightpurple" ref={reviewElementRef} id={`ref-${id}`}>
+          {reviews.map(review => <div key={review._id}>
+            <Review data={review} />
+            <hr />
+          </div>)}
+          <ReviewForm productId={id} />
+        </Card>
+      </motion.div>
     </>
   );
 };
