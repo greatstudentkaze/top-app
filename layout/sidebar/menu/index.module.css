@@ -87,14 +87,7 @@
 }
 
 .secondLevelItem > .secondLevelItemBlock {
-  display: none;
-
-  padding-top: 8px;
-  padding-bottom: 5px;
-}
-
-.secondLevelItem > .secondLevelItemBlockOpened {
-  display: block;
+  overflow: hidden;
 }
 
 .thirdLevelItem {

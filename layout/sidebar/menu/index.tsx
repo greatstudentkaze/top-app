@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
+import { motion } from 'framer-motion';
 
 import { AppContext } from '../../../context/app.context';
 import { PageItem } from '../../../interfaces/menu.interface';
@@ -12,6 +13,31 @@ import styles from './index.module.css';
 const Menu = (): JSX.Element => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
   const router = useRouter();
+
+  const variants = {
+    visible: {
+      paddingTop: 8,
+      paddingBottom: 5,
+      transition: {
+        staggerChildren: 0.02,
+      }
+    },
+    hidden: {
+      paddingTop: 0,
+      paddingBottom: 0,
+    },
+  };
+
+  const thirdLevelItemVariants = {
+    visible: {
+      opacity: 1,
+      height: 29,
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+    },
+  };
 
   const openSecondLevelItemBlock = (secondCategory: string) => {
     if (!setMenu) {
@@ -64,11 +90,15 @@ const Menu = (): JSX.Element => {
               <button type="button" onClick={() => openSecondLevelItemBlock(item._id.secondCategory)}>
                 {item._id.secondCategory}
               </button>
-              <ul className={cn(styles.secondLevelItemBlock, {
-                [styles.secondLevelItemBlockOpened]: item.isOpened,
-              })}>
+              <motion.ul
+                className={styles.secondLevelItemBlock}
+                variants={variants}
+                initial={item.isOpened ? 'visible' : 'hidden'}
+                animate={item.isOpened ? 'visible' : 'hidden'}
+                layout
+              >
                 {buildThirdLevel(item.pages, route)}
-              </ul>
+              </motion.ul>
             </li>
           );
         })}
@@ -82,13 +112,13 @@ const Menu = (): JSX.Element => {
         const path = `/${route}/${page.alias}`;
 
         return (
-          <li key={page._id} className={cn(styles.thirdLevelItem, {
+          <motion.li key={page._id} className={cn(styles.thirdLevelItem, {
             [styles.thirdLevelItemActive]: path === router.asPath,
-          })}>
+          })} variants={thirdLevelItemVariants}>
             <Link href={path}>
               <a>{page.category}</a>
             </Link>
-          </li>
+          </motion.li>
         );
       })
     );
