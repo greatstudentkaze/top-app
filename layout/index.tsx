@@ -21,7 +21,9 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       <button className={styles.skipMenu} type="button" onClick={handleSkipMenuClick}>Сразу к содержанию</button>
       <Header className={styles.header} />
       <Sidebar className={styles.sidebar} />
-      <main className={styles.main} ref={mainElementRef} tabIndex={0}>{children}</main>
+      <main className={styles.main} ref={mainElementRef} tabIndex={0} role="main">
+        {children}
+      </main>
       <Footer className={styles.footer} />
       <Up />
     </div>
