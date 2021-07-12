@@ -26,7 +26,7 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
     <>
       <header className={styles.header}>
         <HeadingTag level="1">{page.title}</HeadingTag>
-        {products.length > 0 && <Tag color="gray" size="medium">{products.length}</Tag>}
+        {products.length > 0 && <Tag color="gray" size="medium" aria-label={`${products.length} элементов`}>{products.length}</Tag>}
         <Sort className={styles.sort} sortType={sortType} setSortType={setSortType} />
       </header>
 

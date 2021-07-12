@@ -31,7 +31,7 @@ const Search = ({ className, ...props }: SearchProps): JSX.Element => {
   return (
     <form className={cn(styles.search, className)} onSubmit={handleSubmit} role="search" {...props}>
       <Input className={styles.input} placeholder="Поиск..." aria-label="Поиск по сайту" value={searchQuery} onChange={handleChange} />
-      <Button className={styles.button} aria-label="Найти" onClick={search}>
+      <Button className={styles.button} aria-label="Искать по сайту" onClick={search}>
         <SearchIcon aria-hidden="true" />
       </Button>
     </form>

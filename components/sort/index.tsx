@@ -14,16 +14,27 @@ const sortItems = [
 const Sort = ({ sortType, setSortType, className, ...props }: SortProps): JSX.Element => {
   const buildSortItems = () => (
     sortItems.map(({ text, type }, i) => {
-      const className = cn({ [styles.active]: sortType === type });
+      const isSelected = sortType === type;
+      const className = cn({ [styles.active]: isSelected });
+      const itemId = `sort-item-${type}`;
 
-      return <a key={i} className={className} onClick={() => setSortType(type)}>
-        <SortIcon className={styles.icon} />
-        {text}
-      </a>;
+      return (
+        <a
+          key={i}
+          id={itemId}
+          className={className}
+          onClick={() => setSortType(type)}
+          aria-selected={isSelected}
+          aria-labelledby={`sort ${itemId}`}>
+          <SortIcon className={styles.icon} />
+          {text}
+        </a>
+      );
     })
   );
 
   return <div className={cn(className, styles.sort)} {...props}>
+    <p id="sort" style={{ display: 'none' }}>Сортировка</p>
     {buildSortItems()}
   </div>;
 };
