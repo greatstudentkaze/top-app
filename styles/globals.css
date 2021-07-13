@@ -16,6 +16,7 @@
 
 .visually-hidden {
   position: absolute;
+
   overflow: hidden;
 
   width: 0;
