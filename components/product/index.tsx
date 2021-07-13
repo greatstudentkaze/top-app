@@ -64,13 +64,20 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
           <HeadingTag level="3">{title}</HeadingTag>
         </div>
         <div className={styles.price}>
-          {formatRuPrice(price)}
-          {oldPrice && <Tag className={styles.discount} color="green" size="small">{formatRuPrice(price - oldPrice)}</Tag>}
+          <span className="visually-hidden">Цена</span> {formatRuPrice(price)}
+          {oldPrice && (
+            <Tag className={styles.discount} color="green" size="small">
+              <span className="visually-hidden">Скидка</span>
+              {formatRuPrice(price - oldPrice)}
+            </Tag>
+          )}
         </div>
         <div className={styles.credit}>
+          <span className="visually-hidden">В кредит цена</span>
           {credit}<span>/мес</span>
         </div>
         <div className={styles.rating}>
+          <span className="visually-hidden">Рейтинг {reviewAvg ?? initialRating} звёзд</span>
           <Rating rating={reviewAvg ?? initialRating} />
         </div>
         <ul className={styles.categories}>
@@ -78,8 +85,8 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
             <Tag color="ghost">{category}</Tag>
           </li>)}
         </ul>
-        <div className={styles.priceLabel}>цена</div>
-        <div className={styles.creditLabel}>кредит</div>
+        <div className={styles.priceLabel} aria-hidden="true">цена</div>
+        <div className={styles.creditLabel} aria-hidden="true">кредит</div>
         <div className={styles.rateLabel}>
           <a href={`ref-${id}`} onClick={scrollToReview}>
             {reviewCount} {declOfNum(reviewCount, ['отзыв', 'отзыва', 'отзывов'])}

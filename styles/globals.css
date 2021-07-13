@@ -14,6 +14,14 @@
   --font-primary: "Noto Sans KR", "Arial", sans-serif;
 }
 
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+
+  width: 0;
+  height: 0;
+}
+
 *,
 ::before,
 ::after {
