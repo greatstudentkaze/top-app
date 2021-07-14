@@ -12,8 +12,13 @@ import { firstLevelMenu } from '../../helpers';
 
 import { withLayout } from '../../layout';
 import { TopPageComponent } from '../../page-components';
+import { Error404 } from '../404';
 
 const TopPage = ({ menu, page, products, firstCategory }: TopPageProps) => {
+  if (!page || !products) {
+    return <Error404/>;
+  }
+
   return (
     <>
       <Head>
