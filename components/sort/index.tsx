@@ -20,10 +20,11 @@ const Sort = ({ sortType, setSortType, className, ...props }: SortProps): JSX.El
 
       return (
         <a
+          href={`#${type}`}
           key={i}
           id={itemId}
           className={className}
-          onClick={() => setSortType(type)}
+          onClick={(evt) => { evt.preventDefault(); setSortType(type);}}
           aria-selected={isSelected}
           aria-labelledby={`sort ${itemId}`}>
           <SortIcon className={styles.icon} />
