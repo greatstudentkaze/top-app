@@ -125,7 +125,10 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
             appearance="ghost"
             arrowDirection={isReviewOpened ? 'down' : 'right'}
             onClick={() => setIsReviewOpened(state => !state)}
-          >Читать отзывы</Button>
+            aria-expanded={isReviewOpened}
+          >
+            Читать отзывы
+          </Button>
         </div>
       </Card>
       <motion.div variants={reviewsVariants} initial="hidden" animate={isReviewOpened ? 'visible' : 'hidden'}>

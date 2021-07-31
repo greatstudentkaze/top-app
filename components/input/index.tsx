@@ -10,7 +10,7 @@ const Input = forwardRef(({ className, error, ...props }: InputProps, ref: Forwa
       <input className={cn(styles.input, {
         [styles.error]: error,
       })} ref={ref} {...props} />
-      {error && <p className={styles.errorMessage}>{error.message}</p>}
+      {error && <p className={styles.errorMessage} role="alert">{error.message}</p>}
     </div>
   );
 });

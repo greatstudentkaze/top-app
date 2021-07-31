@@ -37,6 +37,7 @@ const Rating = forwardRef(({ rating, setRating, isEditable = false, className, e
         onMouseEnter={() => changeDisplay(i + 1)}
         onMouseLeave={() => changeDisplay(rating)}
         onClick={() => updateRating(i + 1)}
+        aria-invalid={!!error}
       />);
 
     setRatingArray(updatedArray);
@@ -49,7 +50,7 @@ const Rating = forwardRef(({ rating, setRating, isEditable = false, className, e
       <ul className={styles.rating}>
         {ratingArray.map((item, i) => <li key={i}>{item}</li>)}
       </ul>
-      {error && <p className={styles.errorMessage}>{error.message}</p>}
+      {error && <p className={styles.errorMessage} role="alert">{error.message}</p>}
     </div>
   );
 });

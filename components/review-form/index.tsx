@@ -14,7 +14,7 @@ import styles from './index.module.css';
 import CloseIcon from './close.svg';
 
 const Review = ({ productId, isOpened, className, ...props }: ReviewFormProps): JSX.Element => {
-  const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
+  const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<IReviewForm>();
   const [isSuccessfulSend, setIsSuccessfulSend] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const tabIndexValue = isOpened ? 0 : -1;
@@ -42,12 +42,14 @@ const Review = ({ productId, isOpened, className, ...props }: ReviewFormProps): 
         placeholder="Имя"
         error={errors.name}
         tabIndex={tabIndexValue}
+        aria-invalid={!!errors.name}
       />
       <Input
         {...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
         placeholder="Заголовок отзыва"
         error={errors.title}
         tabIndex={tabIndexValue}
+        aria-invalid={!!errors.title}
       />
       <div className={styles.ratingBlock}>
         Оценка:
@@ -67,9 +69,11 @@ const Review = ({ productId, isOpened, className, ...props }: ReviewFormProps): 
         placeholder="Текст отзыва"
         error={errors.description}
         tabIndex={tabIndexValue}
+        aria-label="Текст отзыва"
+        aria-invalid={!!errors.description}
       />
       <div className={styles.submit}>
-        <Button type="submit" tabIndex={tabIndexValue}>Отправить</Button>
+        <Button type="submit" tabIndex={tabIndexValue} onClick={() => clearErrors()}>Отправить</Button>
         <p>*&nbsp;Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>
       </div>
     </form>
