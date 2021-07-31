@@ -31,7 +31,7 @@ const Up = (): JSX.Element => {
       animate={controls}
       initial={{ opacity: 0 }}
     >
-      <ButtonIcon icon={'UP_ARROW'} />
+      <ButtonIcon icon={'UP_ARROW'} aria-label="Вернуться наверх" />
     </motion.div>
   );
 };
