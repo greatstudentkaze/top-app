@@ -77,15 +77,15 @@ const Review = ({ productId, isOpened, className, ...props }: ReviewFormProps): 
         <p>*&nbsp;Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>
       </div>
     </form>
-    {isSuccessfulSend && <div className={styles.success}>
-      <button className={styles.alertClose} type="button" aria-label="Закрыть" onClick={() => setIsSuccessfulSend(false)}>
+    {isSuccessfulSend && <div className={styles.success} role="alert">
+      <button className={styles.alertClose} type="button" aria-label="Закрыть оповещение" onClick={() => setIsSuccessfulSend(false)}>
         <CloseIcon />
       </button>
       <h4 className={styles.successTitle}>Ваш отзыв отправлен</h4>
       <p className={styles.successText}>Спасибо! Отзыв будет опубликован после проверки.</p>
     </div>}
-    {errorMessage && <div className={styles.error}>
-      <button className={styles.alertClose} type="button" aria-label="Закрыть" onClick={() => setErrorMessage('')}>
+    {errorMessage && <div className={styles.error} role="alert">
+      <button className={styles.alertClose} type="button" aria-label="Закрыть оповещение" onClick={() => setErrorMessage('')}>
         <CloseIcon />
       </button>
       <p className={styles.errorMessage}>{errorMessage}</p>
