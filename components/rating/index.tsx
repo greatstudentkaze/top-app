@@ -6,12 +6,12 @@ import styles from './index.module.css';
 import StarIcon from './star.svg';
 
 // todo: accessibility
-const Rating = forwardRef(({ rating, setRating, isEditable = false, className, error, ...props }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+const Rating = forwardRef(({ rating, setRating, isEditable = false, className, error, tabIndex, ...props }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
   useEffect(() => {
     constructRating(rating);
-  }, [rating]);
+  }, [rating, tabIndex]);
 
   const changeDisplay = (rating: number) => {
     if (!isEditable) {

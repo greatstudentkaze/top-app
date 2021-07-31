@@ -40,6 +40,8 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
       behavior: 'smooth',
       block: 'start',
     });
+
+    reviewElementRef.current?.focus();
   };
 
   const reviewsVariants = {
@@ -127,12 +129,12 @@ const Product = ({ data, className, ...props }: ProductProps): JSX.Element => {
         </div>
       </Card>
       <motion.div variants={reviewsVariants} initial="hidden" animate={isReviewOpened ? 'visible' : 'hidden'}>
-        <Card className={styles.reviews} color="lightpurple" ref={reviewElementRef} id={`ref-${id}`}>
+        <Card className={styles.reviews} color="lightpurple" ref={reviewElementRef} id={`ref-${id}`} tabIndex={isReviewOpened ? 0 : -1}>
           {reviews.map(review => <div key={review._id}>
             <Review data={review} />
             <hr />
           </div>)}
-          <ReviewForm productId={id} />
+          <ReviewForm productId={id} isOpened={isReviewOpened} />
         </Card>
       </motion.div>
     </>

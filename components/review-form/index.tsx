@@ -13,10 +13,11 @@ import styles from './index.module.css';
 
 import CloseIcon from './close.svg';
 
-const Review = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
+const Review = ({ productId, isOpened, className, ...props }: ReviewFormProps): JSX.Element => {
   const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
   const [isSuccessfulSend, setIsSuccessfulSend] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const tabIndexValue = isOpened ? 0 : -1;
 
   const onSubmit = async (formData: IReviewForm) => {
     try {
@@ -40,11 +41,13 @@ const Review = ({ productId, className, ...props }: ReviewFormProps): JSX.Elemen
         {...register('name', { required: { value: true, message: 'Заполните имя' } })}
         placeholder="Имя"
         error={errors.name}
+        tabIndex={tabIndexValue}
       />
       <Input
         {...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
         placeholder="Заголовок отзыва"
         error={errors.title}
+        tabIndex={tabIndexValue}
       />
       <div className={styles.ratingBlock}>
         Оценка:
@@ -54,7 +57,7 @@ const Review = ({ productId, className, ...props }: ReviewFormProps): JSX.Elemen
           rules={{ required: { value: true, message: 'Укажите рейтинг' } }}
           render={
             ({ field }) =>
-              <Rating className={styles.rating} error={errors.rating} isEditable rating={field.value} ref={field.ref} setRating={field.onChange} />
+              <Rating className={styles.rating} error={errors.rating} isEditable rating={field.value} ref={field.ref} setRating={field.onChange} tabIndex={tabIndexValue} />
           }
         />
       </div>
@@ -63,9 +66,10 @@ const Review = ({ productId, className, ...props }: ReviewFormProps): JSX.Elemen
         {...register('description', { required: { value: true, message: 'Заполните текст отзыва' } })}
         placeholder="Текст отзыва"
         error={errors.description}
+        tabIndex={tabIndexValue}
       />
       <div className={styles.submit}>
-        <Button type="submit">Отправить</Button>
+        <Button type="submit" tabIndex={tabIndexValue}>Отправить</Button>
         <p>*&nbsp;Перед публикацией отзыв пройдет предварительную модерацию и проверку</p>
       </div>
     </form>
