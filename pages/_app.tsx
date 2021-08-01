@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       <meta property="og:locale" content="ru_RU" />
       <link rel="preconnect" href="https://mc.yandex.ru" />
     </Head>
-    <YMInitializer accounts={[]} options={{ webvisor: true, defer: true }} version="2" />
+    <YMInitializer accounts={[83522287]} options={{ webvisor: true, defer: true }} version="2" />
     <Component {...pageProps} />
   </>;
 }
